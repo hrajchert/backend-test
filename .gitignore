@@ -1,0 +1,7 @@
+.stack-work/
+*~
+
+dist
+
+# Secrets for development purposes, shouldnt be commited.
+.env.sh
