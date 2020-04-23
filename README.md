@@ -30,10 +30,13 @@ Build documentation
 ```bash
 # Generate haddock of local project (Apps are ommited :/)
 $ stack build --haddock --haddock-deps --fast --haddock-arguments "--odir=dist/docs --hyperlinked-source"
+# For some reason I needed to do this to make hoogle work
+$ stack build --copy-compiler-tool hoogle
+# If you install a new package and need to refresh the index use
+# This is currently failing
+$ stack hoogle -- generate --local
 # Serve hoogle to search with the installed packages
 $ stack hoogle -- server --local --port=8090
-# If you install a new package and need to refresh the index use
-$ stack hoogle -- generate --local
 ```
 
 ## Developer tools

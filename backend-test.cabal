@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 06ab1be4ed8ac12b91cb191e2c84601b8b0006506da59c276708622324b8f6d3
+-- hash: eadbc9c9570699f43571d09abc420bf7deb21ac1a71efb1d3fa2219bea41ab46
 
 name:           backend-test
 version:        0.0.0.1
@@ -42,6 +42,7 @@ library
     , hw-kafka-avro
     , hw-kafka-client
     , text
+    , wreq
   default-language: Haskell2010
 
 executable backend-test-exe
@@ -50,7 +51,7 @@ executable backend-test-exe
       Paths_backend_test
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       avro
     , backend-test
@@ -60,6 +61,7 @@ executable backend-test-exe
     , hw-kafka-avro
     , hw-kafka-client
     , text
+    , wreq
   default-language: Haskell2010
 
 test-suite backend-test-test
@@ -79,4 +81,5 @@ test-suite backend-test-test
     , hw-kafka-avro
     , hw-kafka-client
     , text
+    , wreq
   default-language: Haskell2010

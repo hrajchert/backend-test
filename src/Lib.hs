@@ -10,13 +10,10 @@ import Data.Avro
 import Data.Text
 import qualified TestTopic as TT
 
-what = encodeValue testTopic
+testItem1 = TT.Items "xyz" "28.8"
 
-testItem = TT.Items "somesku" "27.05"
+testItem2 = TT.Items "xyz" "30.1"
 
-testOrder = TT.Order TT.StatusPENDING "hola@email" [testItem]
+testOrder = TT.Order TT.StatusPENDING "some@email-from-haskell.com" [testItem1, testItem2]
 
-testTopic = TT.Value 32 testOrder
-
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
+testTopic = TT.Value 7 testOrder
