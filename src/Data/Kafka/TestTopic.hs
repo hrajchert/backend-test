@@ -3,19 +3,23 @@
 {-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE TemplateHaskell #-}
 
-module TestTopic
-  ( Value (..),
+module Data.Kafka.TestTopic
+  ( mkTestTopic,
+    TestTopic (..),
+    -- TODO: try to remove
+    Value (..),
     Order (..),
     Status (..),
     Items (..),
   )
 where
 
--- schema'TestMessage,
-
--- import Data.Avro
 import Data.Avro.Deriving (deriveAvroFromByteString, r)
+import Data.Text
 
+type Key = Text
+
+-- Generate Value types from the avro schema
 deriveAvroFromByteString
   [r|
 {
@@ -78,3 +82,13 @@ deriveAvroFromByteString
   "type": "record"
 }
 |]
+
+data TestTopic
+  = TestTopic
+      { ttName :: Text,
+        ttKey :: Key,
+        ttValue :: Value
+      }
+
+mkTestTopic :: Key -> Value -> TestTopic
+mkTestTopic = TestTopic "test.kafka.client"

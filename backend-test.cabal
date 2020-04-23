@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: eadbc9c9570699f43571d09abc420bf7deb21ac1a71efb1d3fa2219bea41ab46
+-- hash: db6f3d9960305bf8733f7135fe486c6e7e71ea209aa75a30533fd86670a71b89
 
 name:           backend-test
 version:        0.0.0.1
@@ -28,8 +28,8 @@ source-repository head
 library
   exposed-modules:
       AppEnv
+      Data.Kafka.TestTopic
       Lib
-      TestTopic
   other-modules:
       Paths_backend_test
   hs-source-dirs:

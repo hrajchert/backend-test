@@ -55,6 +55,15 @@ If you use the ormolu extension in vscode, remember to point to the bin
 TODO: Add comments on how to do it manually.
 TODO: Add a step that validates formmating before commiting.
 
+### Linting
+
+Install hlint and apply-refact in the project
+
+```bash
+$ stack build --copy-compiler-tool hlint
+$ stack build --copy-compiler-tool apply-refact
+```
+
 ### IDE
 
 It is recommended to use [Simple GHC](https://marketplace.visualstudio.com/items?itemName=dramforever.vscode-ghc-simple)
