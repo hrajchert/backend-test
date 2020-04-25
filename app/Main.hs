@@ -11,13 +11,11 @@ testTopic =
   mkTestTopic
     -- key
     "from haskell"
-    $ Value
-      7 -- id
-      ( Order
-          StatusPENDING
-          "some@email-from-haskell.com"
-          [Items "xyz" "28.8", Items "xyz" "30.1"]
-      )
+    $ order
+      (Id 7)
+      StatusPENDING
+      "some@email-from-haskell.com"
+      [item "xyz" "28.8", item "xyz" "30.1"]
 
 main :: IO ()
 main = do

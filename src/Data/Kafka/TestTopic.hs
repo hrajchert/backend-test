@@ -6,16 +6,16 @@
 module Data.Kafka.TestTopic
   ( mkTestTopic,
     TestTopic (..),
-    -- TODO: try to remove
-    Value (..),
-    Order (..),
     Status (..),
-    Items (..),
+    item,
+    order,
+    Id (..),
   )
 where
 
 import Data.Avro.Deriving (deriveAvroFromByteString, r)
 import Data.Text
+import GHC.Int
 
 type Key = Text
 
@@ -92,3 +92,11 @@ data TestTopic
 
 mkTestTopic :: Key -> Value -> TestTopic
 mkTestTopic = TestTopic "test.kafka.client"
+
+newtype Id = Id Int32 deriving (Show)
+
+order :: Id -> Status -> Text -> [Items] -> Value
+order (Id _id) status email items = Value _id $ Order status email items
+
+item :: Text -> Text -> Items
+item = Items
