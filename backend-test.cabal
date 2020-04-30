@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: db6f3d9960305bf8733f7135fe486c6e7e71ea209aa75a30533fd86670a71b89
+-- hash: c06f09bf2a0e462b236cf66711cdce38018319f47d6cd7bd15f744410ecfaaba
 
 name:           backend-test
 version:        0.0.0.1
@@ -35,32 +35,69 @@ library
   hs-source-dirs:
       src
   build-depends:
-      avro
+      aeson
+    , avro
     , base >=4.7 && <5
     , bytestring
     , containers
     , hw-kafka-avro
     , hw-kafka-client
+    , servant
+    , servant-server
     , text
+    , time
+    , wai
+    , warp
     , wreq
   default-language: Haskell2010
 
-executable backend-test-exe
+executable servant-server-exe
   main-is: Main.hs
   other-modules:
       Paths_backend_test
   hs-source-dirs:
-      app
+      app/ServantServer
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      avro
+      aeson
+    , avro
     , backend-test
     , base >=4.7 && <5
     , bytestring
     , containers
     , hw-kafka-avro
     , hw-kafka-client
+    , servant
+    , servant-server
     , text
+    , time
+    , wai
+    , warp
+    , wreq
+  default-language: Haskell2010
+
+executable test-producer-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_backend_test
+  hs-source-dirs:
+      app/TestProducer
+  ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , avro
+    , backend-test
+    , base >=4.7 && <5
+    , bytestring
+    , containers
+    , hw-kafka-avro
+    , hw-kafka-client
+    , servant
+    , servant-server
+    , text
+    , time
+    , wai
+    , warp
     , wreq
   default-language: Haskell2010
 
@@ -73,13 +110,19 @@ test-suite backend-test-test
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
-      avro
+      aeson
+    , avro
     , backend-test
     , base >=4.7 && <5
     , bytestring
     , containers
     , hw-kafka-avro
     , hw-kafka-client
+    , servant
+    , servant-server
     , text
+    , time
+    , wai
+    , warp
     , wreq
   default-language: Haskell2010

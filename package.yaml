@@ -28,14 +28,35 @@ dependencies:
   - containers
   - text
   - wreq
+  - time
+  - aeson
+  - servant-server
+  - servant
+  - wai
+  - warp
 
 library:
   source-dirs: src
 
 executables:
-  backend-test-exe:
+  servant-server-exe:
     main: Main.hs
-    source-dirs: app
+    source-dirs: app/ServantServer
+    ghc-options:
+      - -Wall
+      - -Wcompat
+      - -Wincomplete-record-updates
+      - -Wincomplete-uni-patterns
+      - -Wredundant-constraints
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - backend-test
+
+  test-producer-exe:
+    main: Main.hs
+    source-dirs: app/TestProducer
     ghc-options:
       - -Wall
       - -Wcompat

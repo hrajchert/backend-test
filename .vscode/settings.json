@@ -2,5 +2,6 @@
   "files.associations": {
     "*.hs": "haskell"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "ghcSimple.replCommand": "stack ghci --main-is backend-test:exe:servant-server-exe"
 }
